@@ -18,21 +18,19 @@ import org.openqa.selenium.interactions.internal.Locatable;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class TestCase2 {
+public class TestCase7 {
 
 	@Test
 	public void test() throws Exception {
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver=new ChromeDriver();
-		driver.get("http://testautomationpractice.blogspot.com/");
+		driver.get("https://github.com/bonigarcia/webdrivermanager");
 		driver.manage().window().maximize();
-		driver.findElement(By.xpath("//button[contains(text(),'Click Me')]")).click();
-		System.out.println(driver.switchTo().alert().getText());//capture the text
-		//driver.switchTo().alert().accept();//ok
-		driver.switchTo().alert().dismiss();//cancel
+		WebElement ele=driver.findElement(By.xpath("//a[contains(text(),'Status')]"));
 		
-		
+		File f=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);//capturing screenshot
+		FileUtils.copyFile(f, new File("C:\\Users\\admin\\online\\7-8\\selscenarios\\target\\screenshot1.png"));
 	}
 
 }
